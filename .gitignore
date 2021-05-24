@@ -1,0 +1,5 @@
+# Ignore TODO's
+*.txt
+
+# Ignore VS Code settings
+.vscode/
