@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&family=Poppins:wght@400;600&display=swap");
+
+:root {
+	--hue: 237;
+	--radius: 14px;
+	--space: 10px;
+	--display-font: "Courier Prime", monospace;
+	--body-font: "Poppins", sans-serif;
+	--primary-color: hsl(237, 53%, 55%);
+	--secondary-color: hsl(237, 93%, 77%);
+	--toggle-inactive: hsla(0, 0%, 100%, 0.314);
+	--switch-inactive: hsl(237, 0%, 90%);
+	--glass-bg: hsla(var(--hue), 100%, 100%, 0.15);
+	--glass-bg2: hsla(var(--hue), 100%, 100%, 0.11);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 10px;
+}
+
+input,
+button {
+	border: none;
+	outline: none;
+	background: none;
+}
