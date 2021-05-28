@@ -30,3 +30,230 @@ button {
 	outline: none;
 	background: none;
 }
+
+body {
+	height: 100vh;
+	min-height: 450px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--body-font);
+	font-size: 1.6rem;
+	text-transform: capitalize;
+	line-height: 1;
+	background: var(--primary-color);
+	background: linear-gradient(
+		to bottom left,
+		var(--primary-color),
+		var(--secondary-color)
+	);
+	background: -webkit-linear-gradient(
+		top right,
+		var(--primary-color),
+		var(--secondary-color)
+	);
+}
+
+hr {
+	border: none;
+	margin: 5px 0;
+	height: 1px;
+	background: #0000002f;
+}
+
+#container {
+	padding: var(--space);
+	max-width: 500px;
+	width: 94%;
+	background-color: var(--glass-bg);
+	border: 1px solid #ffffff50;
+	border-radius: var(--radius);
+}
+
+.title {
+	font-size: 2.6rem;
+}
+
+.result-wrapper,
+.slider-wrapper,
+.setting-wrapper {
+	margin-top: var(--space);
+	padding: var(--space);
+	background: var(--glass-bg2);
+	border-radius: var(--radius);
+}
+
+.result-wrapper {
+	padding: calc(var(--space) * 1.4) var(--space);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#result {
+	width: calc(100% - 26px);
+	font-family: var(--display-font);
+	font-size: 1.6rem;
+	pointer-events: none;
+	user-select: none;
+}
+
+.fa-copy {
+	position: relative;
+	bottom: 6px;
+	right: 10px;
+	font-size: 1.8rem;
+	color: #fff;
+	opacity: 0.4;
+	cursor: pointer;
+}
+
+.fa-copy::after {
+	position: absolute;
+	top: calc(100% + 5px);
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: var(--body-font);
+	font-size: 1.1rem;
+	text-transform: uppercase;
+}
+
+.far.fa-copy::after {
+	content: "copy";
+}
+
+.fa-copy:hover {
+	opacity: 0.7;
+}
+
+.fas.fa-copy {
+	opacity: 0.9;
+}
+
+.fas.fa-copy::after {
+	content: "copied";
+	font-weight: normal;
+}
+
+.slider-wrapper h2 {
+	margin-bottom: var(--space);
+	font-size: 1.4rem;
+}
+
+.range-wrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.range-wrapper::before,
+.range-wrapper::after {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+.range-wrapper::before {
+	content: attr(data-min);
+	left: 0;
+}
+
+.range-wrapper::after {
+	content: attr(data-max);
+	right: 0;
+}
+
+#slider {
+	appearance: none;
+	margin-left: -10px;
+	height: var(--space);
+	width: calc(100% - 40px);
+	background-color: var(--toggle-inactive);
+	border-radius: var(--radius);
+}
+
+#slider::-webkit-slider-thumb {
+	appearance: none;
+	height: calc(var(--space) * 2);
+	width: calc(var(--space) * 2);
+	background-color: var(--switch-inactive);
+	border-radius: 50%;
+	box-shadow: 0 0 2px 1px #00000017;
+	cursor: grab;
+	transition: transform 0.1s linear, color 0.1s linear;
+}
+
+#slider::-webkit-slider-thumb:hover {
+	transform: scale(1.1);
+	background-color: hsl(var(--hue), 93%, 70%);
+}
+
+#slider::-webkit-slider-thumb:active {
+	cursor: grabbing;
+}
+
+.wrapper {
+	margin-top: var(--radius);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.toggle {
+	position: relative;
+	margin-right: var(--radius);
+	height: var(--space);
+	width: calc(var(--space) * 2);
+	background-color: var(--toggle-inactive);
+	border-radius: var(--radius);
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.switch {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(-50%, -50%);
+	height: calc(var(--space) * 1.8);
+	width: calc(var(--space) * 1.8);
+	background-color: var(--switch-inactive);
+	border-radius: 50%;
+	box-shadow: 0 0 2px 1px #00000017;
+	transition: left 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.includes {
+	display: none;
+}
+
+.includes:checked + .toggle {
+	background-color: var(--primary-color);
+}
+.includes:checked + .toggle .switch {
+	left: 100%;
+	background-color: hsl(var(--hue), 93%, 70%);
+}
+
+#generate {
+	margin: var(--radius) auto;
+	height: calc(var(--radius) * 3);
+	width: 100%;
+	font-size: 1.7rem;
+	font-weight: bold;
+	background-color: hsl(var(--hue), 100%, 98%);
+	color: var(--primary-color);
+	border-radius: var(--radius);
+	box-shadow: 0 4px 4px 1px #0000001f;
+	cursor: pointer;
+	transition: transform 0.5ms linear;
+}
+
+#generate:active {
+	transform: translateY(4px);
+	box-shadow: none;
+}

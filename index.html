@@ -11,6 +11,45 @@
 </head>
 
 <body>
+    <div id="container">
+        <h1 class="title">password generator</h1>
+        <hr>
+        <div class="result-wrapper">
+            <input type="text" name="result" id="result">
+            <i class="far fa-copy" id="copy-btn"></i>
+        </div>
+        <div class="slider-wrapper">
+            <h2>password length: <span id="length"></span></h2>
+            <label for="slider" data-min="8" data-max="38" class="range-wrapper">
+                <input type="range" name="slider" id="slider" min="8" max="38" value="16">
+            </label>
+        </div>
+        <div class="setting-wrapper">
+            <h2>settings</h2>
+            <hr>
+            <div class="wrapper">
+                <p>include lowercase</p>
+                <input type="checkbox" name="include" id="lower" class="includes" checked>
+                <label for="lower" class="toggle"><span class="switch"></span></label>
+            </div>
+            <div class="wrapper">
+                <p>include uppercase</p>
+                <input type="checkbox" name="include" id="upper" class="includes" checked>
+                <label for="upper" class="toggle"><span class="switch"></span></label>
+            </div>
+            <div class="wrapper">
+                <p>include numbers</p>
+                <input type="checkbox" name="include" id="number" class="includes" checked>
+                <label for="number" class="toggle"><span class="switch"></span></label>
+            </div>
+            <div class="wrapper">
+                <p>include symbols</p>
+                <input type="checkbox" name="include" id="symbol" class="includes" checked>
+                <label for="symbol" class="toggle"><span class="switch"></span></label>
+            </div>
+        </div>
+        <button type="button" id="generate">Generate Password</button>
+    </div>
 
     <!-- Scripts -->
     <script src="./app.js"></script>
