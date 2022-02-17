@@ -15,19 +15,26 @@ const slider = () => {
     passRange.style.background = `linear-gradient(to right, hsl(237, 53%, 55%) ${gradPerc}%, hsla(0, 0%, 100%, 0.314) ${gradPerc}%)`;
 };
 
-// Get Randoms
-const getLowerAlpha = () =>
-    String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-const getUpperAlpha = () =>
-    String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-
-const getNumber = () => Math.floor(Math.random() * 10);
-
-const getSymbol = () => {
-    const symbols = "`-=~!@#$%^&*()_+[]\\{}|;':\",./<>?";
-    return symbols[Math.floor(Math.random() * symbols.length)];
+// Array from Range
+const arrayFromRange = (lower, upper) => {
+    let list = [];
+    for (let i = lower; i <= upper; i++) {
+        list.push(i);
+    }
+    return list;
 };
+
+// Get Randoms
+const lowerAlphaCodes = arrayFromRange(97, 122);
+
+const upperAlphaCodes = arrayFromRange(65, 90);
+
+const numberCodes = arrayFromRange(48, 57);
+
+const symbolCodes = arrayFromRange(33, 47)
+    .concat(arrayFromRange(58, 64))
+    .concat(arrayFromRange(91, 96))
+    .concat(arrayFromRange(123, 126));
 
 // Generate Password
 const generatePassword = () => {
@@ -36,23 +43,31 @@ const generatePassword = () => {
         hasNumber = numberInput.checked,
         hasSymbol = symbolInput.checked,
         totalCount = hasLower + hasUpper + hasNumber + hasSymbol,
+        includeCodes = [],
         index = passRange.value,
         password = "";
 
     if (totalCount === 0) {
         resultDisplay.value = "Minimum 1 setting required";
         return;
+    } else {
+        if (hasLower) {
+            includeCodes = includeCodes.concat(lowerAlphaCodes);
+        }
+        if (hasUpper) {
+            includeCodes = includeCodes.concat(upperAlphaCodes);
+        }
+        if (hasNumber) {
+            includeCodes = includeCodes.concat(numberCodes);
+        }
+        if (hasSymbol) {
+            includeCodes = includeCodes.concat(symbolCodes);
+        }
     }
 
-    while (index > 0) {
-        let randNum = Math.floor(Math.random() * 4);
-        if (randNum == 0 && hasLower) password += getLowerAlpha();
-        else if (randNum == 1 && hasUpper) password += getUpperAlpha();
-        else if (randNum == 2 && hasNumber) password += getNumber();
-        else if (randNum == 3 && hasSymbol) password += getSymbol();
-        else continue;
-
-        index--;
+    for (let i = 0; i < index; i++) {
+        let randInt = Math.floor(Math.random() * includeCodes.length);
+        password += String.fromCharCode(includeCodes[randInt]);
     }
 
     resultDisplay.value = password;
