@@ -12,6 +12,7 @@ const shuffle = (list) => {
     while (length > 0) {
         let randInt = Math.floor(Math.random() * length);
         shuffledPassword.push(list[randInt]);
+        list.splice(randInt, 1);
         length--;
     }
     return shuffledPassword;
