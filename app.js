@@ -1,9 +1,5 @@
 // DOM Elements
-const resultDisplay = document.getElementById("result"),
-    includeLower = document.getElementById("lower").checked,
-    includeUpper = document.getElementById("upper").checked,
-    includeNumber = document.getElementById("number").checked,
-    includeSymbol = document.getElementById("symbol").checked;
+const resultDisplay = document.getElementById("result");
 
 // Shuffle Array Elements
 const shuffle = (list) => {
@@ -37,8 +33,11 @@ const symbols = arrayFromRange(33, 47)
 
 // Generate Password
 const generatePassword = () => {
-    let totalCount =
-            includeLower + includeUpper + includeNumber + includeSymbol,
+    let lower = document.getElementById("lower").checked,
+        upper = document.getElementById("upper").checked,
+        number = document.getElementById("number").checked,
+        symbol = document.getElementById("symbol").checked,
+        totalCount = lower + upper + number + symbol,
         characterSet = [],
         index = passRange.value,
         password = [];
@@ -47,28 +46,28 @@ const generatePassword = () => {
         resultDisplay.value = "Minimum 1 setting required";
         return;
     } else {
-        if (includeLower) {
+        if (lower) {
             characterSet = characterSet.concat(lowerAlphabets);
             // Ensure one lower alphabet is included
             let randInt = Math.floor(Math.random() * lowerAlphabets.length);
             password.push(lowerAlphabets[randInt]);
             index--;
         }
-        if (includeUpper) {
+        if (upper) {
             characterSet = characterSet.concat(upperAlphabets);
             // Ensure one upper alphabet is included
             let randInt = Math.floor(Math.random() * upperAlphabets.length);
             password.push(upperAlphabets[randInt]);
             index--;
         }
-        if (includeNumber) {
+        if (number) {
             characterSet = characterSet.concat(numbers);
             // Ensure one number is included
             let randInt = Math.floor(Math.random() * numbers.length);
             password.push(numbers[randInt]);
             index--;
         }
-        if (includeSymbol) {
+        if (symbol) {
             characterSet = characterSet.concat(symbols);
             // Ensure one symbol is included
             let randInt = Math.floor(Math.random() * symbols.length);
@@ -83,5 +82,5 @@ const generatePassword = () => {
         password.push(characterSet[randInt]);
     }
 
-    resultDisplay.value = password.join("");
+    resultDisplay.value = shuffle(password).join("");
 };
